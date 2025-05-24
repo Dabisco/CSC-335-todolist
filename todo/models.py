@@ -28,7 +28,7 @@ class Todo(models.Model):
     image = models.ImageField(upload_to='todo_images/', blank=True, null=True)
     status = models.ForeignKey(TodoStatus, on_delete=models.CASCADE, related_name='todos', blank=True, null=True)
     priority = models.ForeignKey(TodoPriority, on_delete=models.CASCADE, related_name='todos', blank=True, null=True)
-    due_date = models.DateTimeField(blank=True, null=True)
+    due_date = models.CharField(max_length=255, blank=True, null=True) 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
