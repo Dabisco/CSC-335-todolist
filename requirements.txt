@@ -46,6 +46,7 @@ rave-python==1.4.0
 requests==2.31.0
 requests-oauthlib==2.0.0
 rsa==4.9
+setuptools
 simplejson==3.19.1
 six==1.16.0
 sqlparse==0.4.4
