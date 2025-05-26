@@ -83,6 +83,11 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 # ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://api-csc335todo.up.railway.app',
+    'https://csc335todo-client.vercel.app',  # if you're calling from frontend
+]
+
 AUTHENTICATION_BACKENDS = [
     'account.backends.CustomAuthenticationBackend',
     'django.contrib.auth.backends.ModelBackend',
