@@ -26,6 +26,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('account.urls')),
     path('api/', include('todo.urls')),
+    path('api/', include('scheduler.urls')),
     
     path('api/account/login/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/account/login/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),

@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     
     'account',
     'todo',
+    'scheduler',
 ]
 
 SIMPLE_JWT = {
