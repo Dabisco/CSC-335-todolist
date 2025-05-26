@@ -74,18 +74,26 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOW_CREDENTIALS = True
-# CORS_ALLOWED_ORIGINS = [
-    
-# ]
+CORS_ALLOWED_ORIGINS = [
+    'https://csc335todo-client.vercel.app/',
+    'https://api-csc335todo.up.railway.app',
+    'http://localhost:5173',
+    'http://127.0.0.1:5173',
+] 
 
 CORS_ALLOW_ALL_ORIGINS = True
-# CSRF_TRUSTED_ORIGINS = [
-
-# ]
+CSRF_TRUSTED_ORIGINS = [
+    'https://csc335todo-client.vercel.app/',
+    'https://api-csc335todo.up.railway.app',
+    'http://localhost:5173',
+    'http://127.0.0.1:5173',
+]
 
 CSRF_TRUSTED_ORIGINS = [
     'https://api-csc335todo.up.railway.app',
     'https://csc335todo-client.vercel.app',  # if you're calling from frontend
+    'http://localhost:5173',
+    'http://127.0.0.1:5173',
 ]
 
 AUTHENTICATION_BACKENDS = [
