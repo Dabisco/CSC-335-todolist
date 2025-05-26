@@ -16,13 +16,13 @@ from rest_framework import status as http_status
 @permission_classes([IsAuthenticated])
 def todo_status_list_create(request):
     if request.method == 'GET':
-        queryset = TodoStatus.objects.filter(user=request.user)
+        queryset = TodoStatus.objects.all()
         serializer = TodoStatusSerializer(queryset, many=True)
         return Response(serializer.data)
 
     elif request.method == 'POST':
         name = request.data.get('name')
-        if TodoStatus.objects.filter(user=request.user, name__iexact=name).exists():
+        if TodoStatus.objects.filter(name__iexact=name).exists():
             return Response({'detail': 'Status already exists.'}, status=status.HTTP_400_BAD_REQUEST)
 
         serializer = TodoStatusSerializer(data=request.data)
@@ -37,7 +37,7 @@ def todo_status_list_create(request):
 @api_view(['GET', 'PUT', 'DELETE'])
 @permission_classes([IsAuthenticated])
 def todo_status_detail_update_delete(request, pk):
-    status_obj = get_object_or_404(TodoStatus, pk=pk, user=request.user)
+    status_obj = get_object_or_404(TodoStatus, pk=pk)
 
     if request.method == 'GET':
         serializer = TodoStatusSerializer(status_obj)
@@ -62,18 +62,18 @@ def todo_status_detail_update_delete(request, pk):
 @permission_classes([IsAuthenticated])
 def todo_priority_list_create(request):
     if request.method == 'GET':
-        queryset = TodoPriority.objects.filter(user=request.user)
+        queryset = TodoPriority.objects.all()
         serializer = TodoPrioritySerializer(queryset, many=True)
         return Response(serializer.data)
 
     elif request.method == 'POST':
         name = request.data.get('name')
-        if TodoPriority.objects.filter(user=request.user, name__iexact=name).exists():
+        if TodoPriority.objects.filter(name__iexact=name).exists():
             return Response({'detail': 'Priority already exists.'}, status=status.HTTP_400_BAD_REQUEST)
 
         serializer = TodoPrioritySerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save(user=request.user)
+            serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
@@ -82,7 +82,7 @@ def todo_priority_list_create(request):
 @api_view(['GET', 'PUT', 'DELETE'])
 @permission_classes([IsAuthenticated])
 def todo_priority_detail_update_delete(request, pk):
-    priority_obj = get_object_or_404(TodoPriority, pk=pk, user=request.user)
+    priority_obj = get_object_or_404(TodoPriority, pk=pk)
 
     if request.method == 'GET':
         serializer = TodoPrioritySerializer(priority_obj)

@@ -4,7 +4,7 @@ from django.utils import timezone
 # Create your models here.
 
 class TodoStatus(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='todo_statuses')
+    # user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='todo_statuses')
     name = models.CharField(max_length=50)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -13,7 +13,7 @@ class TodoStatus(models.Model):
         return self.name
     
 class TodoPriority(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='todo_priorities')
+    # user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='todo_priorities')
     name = models.CharField(max_length=50)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
